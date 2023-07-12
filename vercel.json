@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "football_player/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "football_player/wsgi.py"
+    }
+  ]
+}
