@@ -1,0 +1,31 @@
+
+{%extends 'base.html' %}
+{% load static %}
+{% block css_files%}
+<link rel="stylesheet" href="{% static 'biography/add-form.css' %}"/>
+{%endblock%}
+
+{% block title%} Add new player {% endblock%}
+
+{% block content %}
+
+<div class="form-container">
+    <form action="{% url 'add_club_url'%}" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form_control {% if form.field.errors %} errors {% endif %}">
+                {{filed}}
+                {{field.label_tag}}  
+                {{field}}
+                {{field.errors}}
+            </div>
+     
+    
+        {%endfor%}
+
+        <button type="submit">Add</button>
+
+    </form>
+</div>
+
+{% endblock %}

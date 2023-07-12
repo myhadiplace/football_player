@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block title %} show form detail{% endblock %}
+
+{% block content %} 
+
+    <h1>your form details: </h1>
+    {{detail.username}}
+    {{detail.password}}
+    {{detail.color}}
+{% endblock %}

@@ -1,0 +1,14 @@
+<!-- book_confirm_delete.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Confirm Deletion</h1>
+  <p>Are you sure you want to delete the book "{{ object.nick_name }}"?</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm</button>
+    <a href="{% url 'bio_url' %}">Cancel</a>
+  </form>
+{% endblock %}

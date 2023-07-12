@@ -1,0 +1,42 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static "biography/include/card.css" %}"/>
+
+{% block title %} Home {% endblock %}
+
+{% block content %} 
+
+
+
+
+  <div class="card">
+    <img src="{{  p.player_image.url }}"  alt="Beautiful Image">
+    <h2> {{p.nick_name}} </h2>
+    <ul>
+      <li>
+        Born: {{p.born}}
+      </li>
+      <li>
+        place of birth: {{p.birth_place}}
+      </li>
+      <li>
+        Current club: <a href="{% url 'club_finder_url' p.current_club %}">{{ p.current_club}} </a>
+      </li>
+      <li>
+        Foot: {{p.foot}} 
+      </li>
+    </ul>
+  
+    {% if current_url == '/bio/delete' %}
+    <form action="{% url 'delete_url' p.id  %}">
+      <button class='delete-btn' type="submit"> Delete </button>
+    </form>
+    {% endif %}
+
+  </div>
+
+
+
+{% endblock %}

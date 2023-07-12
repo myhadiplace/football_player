@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block css_files %} 
+
+<link rel="stylesheet" href="{% static "biography/home.css" %}"/>
+<link rel="stylesheet" href="{% static "biography/include/card.css" %}"/>
+
+{% endblock %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %} 
+    <section id="main">
+        {% for p in player%}
+        {% include "biography/include/card.html" %}
+        {% endfor %}
+    </section>
+
+    <section id="second">
+    <button class="new-player-btn">
+        <a class="new-player-link" href="{% url 'add_url' %}">
+          <span class="button-text">Add New Player</span>
+        </a>
+      </button>
+    </section>
+
+{% endblock %}

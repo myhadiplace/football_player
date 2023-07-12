@@ -1,0 +1,42 @@
+
+{%extends 'base.html' %}
+{% load static %}
+{% block css_files%}
+<link rel="stylesheet" href="{% static 'biography/add-form.css' %}"/>
+{%endblock%}
+
+{% block title%} Add new player {% endblock%}
+
+{% block content %}
+
+<div class="form-container">
+    <form action="{% url 'add_url'%}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form_control {% if form.field.errors %} errors {% endif %}">
+                {{filed}}
+                {{field.label_tag}}  
+                {% if field.label == "Current Club" %}
+                    <a href="{% url 'add_club_url' %}">Add new club</a>
+                {% endif %}
+                {{field}}
+                {{field.errors}}
+            </div>
+     
+    
+        {%endfor%}
+
+        <button type="submit">Add</button>
+
+    </form>
+</div>
+    {% comment %} <br><br><br><br>
+    <form action="/bio/show" method="GET">
+        {% csrf_token %}
+        <label for="username"> your name </label>
+        <input id="username" name="username" type="text"><br>
+        <input name="password" type="password"><br>
+        <input name="color" type="color"><br>
+        <button type="submit"> Send </button>
+    </form>  {% endcomment %}
+{% endblock %}
